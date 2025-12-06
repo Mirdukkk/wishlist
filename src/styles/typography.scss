@@ -1,0 +1,73 @@
+@font-face {
+	font-weight: 700;
+	font-style: normal;
+	font-family: 'Podarok';
+	src: url('/fonts/Podarok.woff2') format('woff2');
+	font-display: fallback;
+}
+
+@font-face {
+	font-weight: 400;
+	font-style: normal;
+	font-family: 'TikTokSans';
+	src: url('/fonts/TikTokSans-Regular.woff2') format('woff2');
+	font-display: fallback;
+}
+
+@font-face {
+	font-weight: 500;
+	font-style: normal;
+	font-family: 'TikTokSans';
+	src: url('/fonts/TikTokSans-Medium.woff2') format('woff2');
+	font-display: fallback;
+}
+
+@font-face {
+	font-weight: 700;
+	font-style: normal;
+	font-family: 'TikTokSans';
+	src: url('/fonts/TikTokSans-Bold.woff2') format('woff2');
+	font-display: fallback;
+}
+
+:root {
+	--font-family-decorative:
+		'Podarok', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji';
+	--font-family-base:
+		'TikTokSans', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji';
+
+	--font-display: 700 5rem/5rem var(--font-family-decorative); /* 80px/80px */
+	--font-heading-2xl: 700 3rem/3.25rem var(--font-family-base); /* 48px/52px */
+	--font-heading-xl: 700 2.5rem/2.75rem var(--font-family-base); /* 40px/44px */
+	--font-heading-lg: 700 2rem/2.25rem var(--font-family-base); /* 32px/36px */
+	--font-heading-md: 700 1.625rem/2rem var(--font-family-base); /* 26px/32px */
+	--font-heading-sm: 700 1.375rem/1.875rem var(--font-family-base); /* 22px/30px */
+	--font-body-md: 1.25rem/1.875rem var(--font-family-base); /* 20px/30px */
+	--font-body-sm: 1.125rem/1.75rem var(--font-family-base); /* 18px/28px */
+	--font-caption: 1rem/1.5rem var(--font-family-base); /* 16px/24px */
+}
+
+@media (max-width: 768px) {
+	:root {
+		--font-display: 700 4rem/4rem var(--font-family-decorative); /* 64px/64px */
+		--font-heading-2xl: 700 2.5rem/2.75rem var(--font-family-base); /* 40px/44px */
+		--font-heading-xl: 700 2.25rem/2.5rem var(--font-family-base); /* 36px/40px */
+		--font-heading-lg: 700 1.75rem/2.125rem var(--font-family-base); /* 28px/34px */
+	}
+}
+
+@media (max-width: 640px) {
+	:root {
+		--font-display: 700 3.75rem/3.75rem var(--font-family-decorative); /* 60px/60px */
+		--font-heading-2xl: 700 2rem/2.25rem var(--font-family-base); /* 32px/36px */
+		--font-heading-xl: 700 1.75rem/2.125rem var(--font-family-base); /* 28px/34px */
+		--font-heading-lg: 700 1.625rem/2rem var(--font-family-base); /* 26px/32px */
+		--font-heading-md: 700 1.375rem/1.875rem var(--font-family-base); /* 22px/30px */
+		--font-heading-sm: 700 1.25rem/1.75rem var(--font-family-base); /* 20px/28px */
+		--font-body-md: 1.125rem/1.75rem var(--font-family-base); /* 18px/28px */
+		--font-body-sm: 1rem/1.5rem var(--font-family-base); /* 16px/24px */
+		--font-caption: 0.875rem/1.25rem var(--font-family-base); /* 14px/20px */
+	}
+}
