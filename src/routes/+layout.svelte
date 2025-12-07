@@ -4,6 +4,7 @@
 
 	import Garland from '$lib/components/background/Garland.svelte'
 	import Snowfall from '$lib/components/background/Snowfall.svelte'
+	import Footer from '$lib/components/layout/Footer.svelte'
 
 	let { children } = $props()
 </script>
@@ -19,6 +20,9 @@
 	</div>
 	<div class="layout__content">
 		{@render children()}
+	</div>
+	<div class="layout__footer">
+		<Footer />
 	</div>
 </div>
 
@@ -49,6 +53,14 @@
 
 			@media (max-width: 640px) {
 				margin-block-start: 20px;
+			}
+		}
+
+		&__footer {
+			margin-block-start: 56px;
+
+			@media (max-width: 1024px) {
+				margin-block-start: 28px;
 			}
 		}
 	}

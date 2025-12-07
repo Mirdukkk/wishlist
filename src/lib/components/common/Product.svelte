@@ -1,20 +1,22 @@
 <script module lang="ts">
-	export interface CardProps {
+	export interface ProductProps {
+		id: string
 		name: string
 		image: string
 		caption?: string
 		price?: number
 		flipped?: boolean
+		onclick?: () => void
 	}
 </script>
 
 <script lang="ts">
-	import { formatPrice } from '$lib/utils/format-price'
+	import { formatPrice } from '$lib/utils'
 
 	import Text from '$lib/components/typography/Text.svelte'
 
-	let { name, image, caption, price, flipped }: CardProps = $props()
-	let cardFrame = $derived.by(() => {
+	let { name, image, caption, price, flipped, onclick }: ProductProps = $props()
+	let productFrame = $derived.by(() => {
 		if (!price) return
 
 		if (price <= 500) return 1
@@ -24,19 +26,25 @@
 	})
 </script>
 
-<button type="button" class={`card card--frame-${cardFrame}`} class:card--flipped={flipped}>
-	<div class="card__wrapper">
-		<div class="card__front">
-			<div class="card__inner">
+<button
+	type="button"
+	class={`product product--frame-${productFrame}`}
+	aria-label="Открыть товар {name}"
+	class:product--flipped={flipped}
+	{onclick}
+>
+	<article class="product__wrapper">
+		<div class="product__front">
+			<div class="product__inner">
 				<img
 					alt={name}
 					src={image}
 					width={192}
 					height={192}
 					draggable="false"
-					class="card__image"
+					class="product__image"
 				/>
-				<div class="card__info">
+				<div class="product__info">
 					<Text as="h2" font="decorative" tone="accent">{name}</Text>
 					{#if caption}
 						<Text as="p" weight="medium">{caption}</Text>
@@ -47,82 +55,88 @@
 				</div>
 			</div>
 		</div>
-		<div class="card__back">
-			<div class="card__pattern"></div>
+		<div class="product__back">
+			<div class="product__pattern"></div>
 		</div>
-	</div>
+	</article>
 </button>
 
 <style lang="scss">
-	.card {
+	.product {
 		all: unset;
 		position: relative;
 		box-sizing: border-box;
 		width: 100%;
 		aspect-ratio: 5 / 7;
+		border-radius: 16px;
 		cursor: pointer;
 		user-select: none;
 		perspective: 100vh;
 
 		&:active {
-			.card__wrapper {
+			.product__wrapper {
 				transition: transform var(--duration-long);
 			}
 		}
 
-		&:hover:not(.card--flipped) {
-			.card__wrapper {
+		&:hover:not(.product--flipped) {
+			.product__wrapper {
 				transition: transform var(--duration-long);
-				transform: rotateY(6deg) scale(1.02);
+				transform: scale(1.02);
 			}
 		}
 
-		&:active:not(.card--flipped) {
-			.card__wrapper {
-				transform: rotateY(6deg) scale(1);
+		&:active:not(.product--flipped) {
+			.product__wrapper {
+				transform: scale(1);
 			}
+		}
+
+		&:focus-visible {
+			outline: 2px solid rgb(var(--color-accent));
+			outline-offset: 2px;
 		}
 
 		&--frame {
 			&-1 {
-				.card__front {
-					background-image: url('/images/card/frame-1.svg');
+				.product__front {
+					background-image: url('/images/product/frame-1.svg');
 				}
 			}
 
 			&-2 {
-				.card__front {
-					background-image: url('/images/card/frame-2.svg');
+				.product__front {
+					background-image: url('/images/product/frame-2.svg');
 				}
 			}
 
 			&-3 {
-				.card__front {
-					background-image: url('/images/card/frame-3.svg');
+				.product__front {
+					background-image: url('/images/product/frame-3.svg');
 				}
 			}
 
 			&-4 {
-				.card__front {
-					background-image: url('/images/card/frame-4.svg');
+				.product__front {
+					background-image: url('/images/product/frame-4.svg');
 				}
 			}
 		}
 
 		&--flipped {
-			.card__wrapper {
+			.product__wrapper {
 				transform: rotateY(180deg);
 			}
 
 			&:hover {
-				.card__wrapper {
-					transform: rotateY(0deg) scale(1.02);
+				.product__wrapper {
+					transform: scale(1.02);
 				}
 			}
 
 			&:active {
-				.card__wrapper {
-					transform: rotateY(0deg) scale(1);
+				.product__wrapper {
+					transform: scale(1);
 				}
 			}
 		}
@@ -193,7 +207,7 @@
 			height: 100%;
 			border: 3px solid rgb(var(--color-content));
 			border-radius: 6px;
-			background-image: url('/images/card/back-pattern.svg');
+			background-image: url('/images/product/back-pattern.svg');
 			background-size: cover;
 		}
 	}

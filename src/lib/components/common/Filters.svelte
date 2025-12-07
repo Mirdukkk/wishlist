@@ -13,7 +13,7 @@
 
 <script lang="ts">
 	let { value = $bindable() }: FiltersProps = $props()
-	let filters: FilterModel[] = [
+	const filters: FilterModel[] = [
 		{
 			label: 'Все',
 			value: 'all'
@@ -81,7 +81,7 @@
 			}
 
 			&:hover:not(.filters__item--selected),
-			&:focus:not(.filters__item--selected) {
+			&:focus-visible:not(.filters__item--selected) {
 				border-color: rgb(var(--color-content));
 				background: rgb(var(--color-content) / 0.15);
 			}

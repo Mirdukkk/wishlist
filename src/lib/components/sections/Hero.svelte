@@ -23,30 +23,27 @@
 
 <style lang="scss">
 	.hero {
+		&__container {
+			display: flex;
+			flex-direction: column;
+			gap: 48px;
+
+			@media (max-width: 640px) {
+				gap: 36px;
+			}
+		}
+
 		&__top {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			margin-bottom: 48px;
-
-			@media (max-width: 640px) {
-				margin-bottom: 36px;
-			}
 		}
 
 		&__image {
 			width: 64px;
 			height: 64px;
-			margin-bottom: 16px;
 			border-radius: 50%;
-		}
-
-		&__title {
-			margin-bottom: 48px;
-
-			@media (max-width: 640px) {
-				margin-bottom: 36px;
-			}
+			margin-block-end: 16px;
 		}
 	}
 </style>
