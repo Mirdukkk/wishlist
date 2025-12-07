@@ -2,7 +2,8 @@
 	import '../styles/global.scss'
 	import favicon from '$lib/assets/favicon.svg'
 
-	import Background from '$lib/components/background/Background.svelte'
+	import Garland from '$lib/components/background/Garland.svelte'
+	import Snowfall from '$lib/components/background/Snowfall.svelte'
 
 	let { children } = $props()
 </script>
@@ -13,7 +14,8 @@
 
 <div class="layout">
 	<div class="layout__background">
-		<Background />
+		<Garland />
+		<Snowfall />
 	</div>
 	<div class="layout__content">
 		{@render children()}
@@ -36,11 +38,12 @@
 			overflow: hidden;
 			width: 100%;
 			height: 240px;
-			margin-inline: auto;
+			mask-image: linear-gradient(black 50%, transparent);
 		}
 
 		&__content {
 			position: relative;
+			z-index: 5;
 			flex: 1;
 			margin-block-start: 40px;
 

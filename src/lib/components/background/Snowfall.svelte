@@ -26,6 +26,7 @@
 	.snowfall {
 		position: absolute;
 		left: 50%;
+		z-index: 2;
 		transform: translateX(-50%);
 
 		&-part {
@@ -37,17 +38,17 @@
 			transform: translateX(-50%);
 			animation: animation-snowfall linear infinite;
 
-      &-1 {
-        animation-duration: 20s;
-      }
+			&-1 {
+				animation-duration: 20s;
+			}
 
-      &-2 {
-        animation-duration: 30s;
-      }
+			&-2 {
+				animation-duration: 30s;
+			}
 
-      &-3 {
-        animation-duration: 40s;
-      }
+			&-3 {
+				animation-duration: 40s;
+			}
 		}
 	}
 

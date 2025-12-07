@@ -17,7 +17,6 @@
 		</div>
 		<div class="hero__filters">
 			<Filters bind:value={filter} />
-			{filter}
 		</div>
 	</div>
 </Section>

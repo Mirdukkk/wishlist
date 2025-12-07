@@ -12,8 +12,6 @@
 </script>
 
 <script lang="ts">
-	import { ToggleGroup } from 'bits-ui'
-
 	let { value = $bindable() }: FiltersProps = $props()
 	let filters: FilterModel[] = [
 		{
@@ -37,37 +35,22 @@
 			value: 'above2000'
 		}
 	]
-
-	const getValue = () => {
-		return value
-	}
-
-	const setValue = (newValue: Filter) => {
-		if (newValue) {
-			value = newValue
-		}
-	}
 </script>
 
-<ToggleGroup.Root type="single" bind:value={getValue, setValue}>
-	{#snippet child({ props })}
-		<div class="filters" {...props}>
-			{#each filters as filter}
-				<ToggleGroup.Item value={filter.value}>
-					{#snippet child({ props })}
-						<button
-							class={{ 'filters__item': true, 'filters__item--selected': value === filter.value }}
-							type="button"
-							{...props}
-						>
-							{filter.label}
-						</button>
-					{/snippet}
-				</ToggleGroup.Item>
-			{/each}
-		</div>
-	{/snippet}
-</ToggleGroup.Root>
+<div class="filters">
+	{#each filters as filter}
+		<button
+			type="button"
+			class="filters__item"
+			role="tab"
+			class:filters__item--selected={value === filter.value}
+			aria-selected={value === filter.value}
+			onclick={() => (value = filter.value)}
+		>
+			{filter.label}
+		</button>
+	{/each}
+</div>
 
 <style lang="scss">
 	.filters {
@@ -84,7 +67,8 @@
 			padding: 8px 20px;
 			border: 2px solid rgb(var(--color-subtle));
 			border-radius: 32px;
-			background: rgb(var(--color-background));
+			background: transparent;
+			outline: none;
 			font: 700 var(--font-body-md);
 			cursor: pointer;
 			transition:
@@ -96,7 +80,8 @@
 				padding: 6px 16px;
 			}
 
-			&:hover:not(.filters__item--selected) {
+			&:hover:not(.filters__item--selected),
+			&:focus:not(.filters__item--selected) {
 				border-color: rgb(var(--color-content));
 				background: rgb(var(--color-content) / 0.15);
 			}

@@ -16,7 +16,7 @@ html {
 
 body {
   margin: 0;
-  background: rgb(var(--color-background));
+  background: rgb(var(--color-background)) url("/images/background/noise.webp");
   color: rgb(var(--color-content));
   font: var(--font-body-md);
   text-rendering: optimizeLegibility;

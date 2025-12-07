@@ -10,6 +10,7 @@
 	.garland {
 		position: absolute;
 		left: 50%;
+		z-index: 3;
 		pointer-events: none;
 		user-select: none;
 		transform: translateX(-50%);
