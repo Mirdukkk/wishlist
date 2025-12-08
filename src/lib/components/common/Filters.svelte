@@ -82,19 +82,19 @@
 
 			&:hover:not(.filters__item--selected),
 			&:focus-visible:not(.filters__item--selected) {
-				border-color: rgb(var(--color-content));
-				background: rgb(var(--color-content) / 0.15);
+				border-color: rgb(var(--color-cream));
+				background: rgb(var(--color-cream) / 0.15);
 			}
 
 			&:active:not(.filters__item--selected) {
-				border-color: rgb(var(--color-content));
-				background: rgb(var(--color-content) / 0.2);
+				border-color: rgb(var(--color-cream));
+				background: rgb(var(--color-cream) / 0.2);
 			}
 
 			&--selected {
 				border-color: transparent;
-				background: rgb(var(--color-content));
-				color: rgb(var(--color-background));
+				background: rgb(var(--color-cream));
+				color: rgb(var(--color-blue));
 			}
 		}
 	}

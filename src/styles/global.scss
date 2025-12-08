@@ -16,8 +16,8 @@ html {
 
 body {
   margin: 0;
-  background: rgb(var(--color-background)) url("/images/background/noise.webp");
-  color: rgb(var(--color-content));
+  background: rgb(var(--color-blue)) url("/images/background/noise.webp");
+  color: rgb(var(--color-cream));
   font: var(--font-body-md);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -97,7 +97,7 @@ summary {
 }
 
 a, a:hover, a:active, a:visited, button {
-  color: rgb(var(--color-content));
+  color: rgb(var(--color-cream));
   text-decoration: none;
   transition: color var(--duration-default), border var(--duration-default), background var(--duration-default);
 }

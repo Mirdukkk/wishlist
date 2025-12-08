@@ -36,7 +36,7 @@
 
 	export type TextPropsFont = 'base' | 'decorative'
 
-	export type TextPropsTone = 'accent' | 'muted' | 'subtle' | 'content' | 'other'
+	export type TextPropsColor = 'blue' | 'red' | 'cream' | 'muted' | 'subtle' | 'other'
 
 	export type TextPropsAlignment = 'start' | 'center' | 'end' | 'justify'
 	export type TextPropsWeight = 'normal' | 'medium' | 'bold'
@@ -48,9 +48,9 @@
 		as: TextPropsElement
 		breakWord?: boolean
 		children: Snippet
+		color?: TextPropsColor
 		class?: ClassValue
 		font?: TextPropsFont
-		tone?: TextPropsTone
 		tracking?: TextPropsTracking
 		truncate?: boolean
 		uppercase?: boolean
@@ -66,8 +66,8 @@
 		as,
 		breakWord,
 		children,
+		color,
 		font,
-		tone,
 		tracking,
 		truncate,
 		uppercase,
@@ -97,7 +97,7 @@
 			'text': true,
 			[textVariant as HeadingVariant]: !!textVariant,
 			[`text--alignment-${alignment}`]: alignment,
-			[`text--tone-${tone}`]: tone,
+			[`text--color-${color}`]: color,
 			[`text--weight-${weight}`]: weight,
 			[`text--font-${font}`]: font,
 			[`text--decoration-${textDecoration}`]: textDecoration,
@@ -136,9 +136,17 @@
 			}
 		}
 
-		&--tone {
-			&-accent {
-				color: rgb(var(--color-accent));
+		&--color {
+			&-blue {
+				color: rgb(var(--color-blue));
+			}
+
+			&-red {
+				color: rgb(var(--color-red));
+			}
+
+			&-cream {
+				color: rgb(var(--color-cream));
 			}
 
 			&-muted {
@@ -147,10 +155,6 @@
 
 			&-subtle {
 				color: rgb(var(--color-subtle));
-			}
-
-			&-content {
-				color: rgb(var(--color-content));
 			}
 		}
 

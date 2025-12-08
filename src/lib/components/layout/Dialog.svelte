@@ -24,8 +24,10 @@
 			{#snippet child({ props, open: isOpen })}
 				{#if isOpen}
 					<div class="dialog__container" transition:fade={{ duration: 100 }}>
-						<div {...props} class="dialog__content">
-							{@render children({ close: () => (open = false) })}
+						<div {...props} class="dialog__inner">
+							<div class="dialog__content">
+								{@render children({ close: () => (open = false) })}
+							</div>
 						</div>
 					</div>
 				{/if}
@@ -62,13 +64,28 @@
 			}
 		}
 
-		&__content {
+		&__inner {
 			width: 100%;
-			max-width: 640px;
+			max-width: 680px;
 			margin-inline: auto;
-			padding: 36px;
-			border-radius: 24px;
-			background: rgb(var(--color-background));
+			padding: 12px;
+			border-radius: 20px;
+			background: repeating-linear-gradient(
+				135deg,
+				rgb(var(--color-red)) 0 32px,
+				rgb(var(--color-cream)) 0 64px
+			);
+			color: rgb(var(--color-blue));
+
+			@media (max-width: 640px) {
+				border-radius: 0;
+			}
+		}
+
+		&__content {
+			padding: 24px;
+			border-radius: 12px;
+			background: rgb(var(--color-cream));
 
 			@media (max-width: 640px) {
 				border-radius: 0;

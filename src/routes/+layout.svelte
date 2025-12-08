@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../styles/global.scss'
-	import favicon from '$lib/assets/favicon.svg'
+	import favicon from '$lib/assets/favicon.png'
 
 	import Garland from '$lib/components/background/Garland.svelte'
 	import Snowfall from '$lib/components/background/Snowfall.svelte'
@@ -11,6 +11,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>Мой вишлист — Егор Мамыкин</title>
 </svelte:head>
 
 <div class="layout">

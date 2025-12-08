@@ -28,7 +28,7 @@
 <footer class="footer">
 	<div class="footer__start">
 		<img src="/images/logos/me.svg" alt="Мой логотип" />
-		<Text as="p" variant="caption" tone="subtle">2025–2026</Text>
+		<Text as="p" variant="caption" color="subtle">2025–2026</Text>
 	</div>
 	{#each footerLinks as footerLink}
 		<a href={footerLink.href} target="_blank" class="footer__link" rel="noopener noreferrer">
@@ -77,7 +77,7 @@
 
 			&:hover,
 			&:focus-visible {
-				color: rgb(var(--color-content));
+				color: rgb(var(--color-cream));
 				text-decoration: var(--decoration-link);
 			}
 		}

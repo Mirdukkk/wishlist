@@ -1,22 +1,16 @@
-<script module lang="ts">
-	export interface ProductProps {
-		id: string
-		name: string
-		image: string
-		caption?: string
-		price?: number
-		flipped?: boolean
-		onclick?: () => void
-	}
-</script>
-
 <script lang="ts">
+	import type { ProductSummary } from '$lib/types'
 	import { formatPrice } from '$lib/utils'
 
 	import Text from '$lib/components/typography/Text.svelte'
 
-	let { name, image, caption, price, flipped, onclick }: ProductProps = $props()
-	let productFrame = $derived.by(() => {
+	interface ProductCardProps extends ProductSummary {
+		flipped?: boolean
+		onclick?: () => void
+	}
+
+	let { name, image, shortDescription, price, flipped, onclick }: ProductCardProps = $props()
+	let productCardFrame = $derived.by(() => {
 		if (!price) return
 
 		if (price <= 500) return 1
@@ -28,26 +22,26 @@
 
 <button
 	type="button"
-	class={`product product--frame-${productFrame}`}
+	class={`product-card product-card--frame-${productCardFrame}`}
 	aria-label="Открыть товар {name}"
-	class:product--flipped={flipped}
+	class:product-card--flipped={flipped}
 	{onclick}
 >
-	<article class="product__wrapper">
-		<div class="product__front">
-			<div class="product__inner">
+	<article class="product-card__wrapper">
+		<div class="product-card__front">
+			<div class="product-card__inner">
 				<img
 					alt={name}
 					src={image}
 					width={192}
 					height={192}
 					draggable="false"
-					class="product__image"
+					class="product-card__image"
 				/>
-				<div class="product__info">
-					<Text as="h2" font="decorative" tone="accent">{name}</Text>
-					{#if caption}
-						<Text as="p" weight="medium">{caption}</Text>
+				<div class="product-card__info">
+					<Text as="h2" font="decorative" color="red">{name}</Text>
+					{#if shortDescription}
+						<Text as="p" weight="medium">{shortDescription}</Text>
 					{/if}
 					{#if price}
 						<Text as="p" variant="headingSm">{formatPrice(price)}</Text>
@@ -55,14 +49,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="product__back">
-			<div class="product__pattern"></div>
+		<div class="product-card__back">
+			<div class="product-card__pattern"></div>
 		</div>
 	</article>
 </button>
 
 <style lang="scss">
-	.product {
+	.product-card {
 		all: unset;
 		position: relative;
 		box-sizing: border-box;
@@ -74,68 +68,68 @@
 		perspective: 100vh;
 
 		&:active {
-			.product__wrapper {
+			.product-card__wrapper {
 				transition: transform var(--duration-long);
 			}
 		}
 
-		&:hover:not(.product--flipped) {
-			.product__wrapper {
+		&:hover:not(.product-card--flipped) {
+			.product-card__wrapper {
 				transition: transform var(--duration-long);
 				transform: scale(1.02);
 			}
 		}
 
-		&:active:not(.product--flipped) {
-			.product__wrapper {
+		&:active:not(.product-card--flipped) {
+			.product-card__wrapper {
 				transform: scale(1);
 			}
 		}
 
 		&:focus-visible {
-			outline: 2px solid rgb(var(--color-accent));
+			outline: 2px solid rgb(var(--color-red));
 			outline-offset: 2px;
 		}
 
 		&--frame {
 			&-1 {
-				.product__front {
+				.product-card__front {
 					background-image: url('/images/product/frame-1.svg');
 				}
 			}
 
 			&-2 {
-				.product__front {
+				.product-card__front {
 					background-image: url('/images/product/frame-2.svg');
 				}
 			}
 
 			&-3 {
-				.product__front {
+				.product-card__front {
 					background-image: url('/images/product/frame-3.svg');
 				}
 			}
 
 			&-4 {
-				.product__front {
+				.product-card__front {
 					background-image: url('/images/product/frame-4.svg');
 				}
 			}
 		}
 
 		&--flipped {
-			.product__wrapper {
+			.product-card__wrapper {
 				transform: rotateY(180deg);
 			}
 
 			&:hover {
-				.product__wrapper {
+				.product-card__wrapper {
 					transform: scale(1.02);
 				}
 			}
 
 			&:active {
-				.product__wrapper {
+				.product-card__wrapper {
 					transform: scale(1);
 				}
 			}
@@ -151,11 +145,11 @@
 
 		&__front {
 			z-index: 2;
-			background: rgb(var(--color-content));
+			background: rgb(var(--color-cream));
 		}
 
 		&__back {
-			background: rgb(var(--color-accent));
+			background: rgb(var(--color-red));
 			transform: rotateY(180deg);
 		}
 
@@ -185,8 +179,8 @@
 			padding: 16px;
 			border: none;
 			border-radius: 6px;
-			background: rgb(var(--color-content));
-			color: rgb(var(--color-background));
+			background: rgb(var(--color-cream));
+			color: rgb(var(--color-blue));
 			text-align: center;
 		}
 
@@ -205,7 +199,7 @@
 		&__pattern {
 			width: 100%;
 			height: 100%;
-			border: 3px solid rgb(var(--color-content));
+			border: 3px solid rgb(var(--color-cream));
 			border-radius: 6px;
 			background-image: url('/images/product/back-pattern.svg');
 			background-size: cover;
