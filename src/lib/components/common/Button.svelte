@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte'
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
 
-	type ButtonVariant = 'default' | 'outline'
+	type ButtonVariant = 'default' | 'accent' | 'outline'
 
 	type AnchorElement = Omit<HTMLAnchorAttributes, 'href' | 'type'> & {
 		href: HTMLAnchorAttributes['href']
@@ -19,6 +19,7 @@
 	type ButtonProps = (AnchorElement | ButtonElement) & {
 		children?: Snippet
 		variant?: ButtonVariant
+		block?: boolean
 	}
 
 	let {
@@ -27,6 +28,7 @@
 		children,
 		disabled = false,
 		variant = 'default',
+		block,
 		...props
 	}: ButtonProps = $props()
 </script>
@@ -39,6 +41,7 @@
 	role={href && disabled ? 'link' : undefined}
 	tabindex={href && disabled ? -1 : 0}
 	class="button button--variant-{variant}"
+	class:button--block={block}
 	{...props}
 >
 	{@render children?.()}
@@ -55,7 +58,7 @@
 		height: 48px;
 		padding-inline: 20px;
 		border-radius: 36px;
-		font-weight: 700;
+		font: 700 var(--font-body-sm);
 		cursor: pointer;
 		transition: background-color var(--duration-default);
 
@@ -74,6 +77,20 @@
 				}
 			}
 
+			&-accent {
+				background: rgb(var(--color-red));
+				color: rgb(var(--color-cream));
+
+				&:hover,
+				&:focus-visible {
+					background: rgb(var(--color-red) / 0.85);
+				}
+
+				&:active {
+					background: rgb(var(--color-red) / 0.8);
+				}
+			}
+
 			&-outline {
 				border: 2px solid rgb(var(--color-blue));
 				background: transparent;
@@ -88,6 +105,10 @@
 					background: rgb(var(--color-blue) / 0.1);
 				}
 			}
+		}
+
+		&--block {
+			width: 100%;
 		}
 
 		&:disabled {

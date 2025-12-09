@@ -83,11 +83,16 @@
 		}
 
 		&__content {
+			position: relative;
+			display: flex;
+			gap: 24px;
 			padding: 24px;
 			border-radius: 12px;
 			background: rgb(var(--color-cream));
 
 			@media (max-width: 640px) {
+				flex-direction: column-reverse;
+				padding: 16px;
 				border-radius: 0;
 			}
 		}
