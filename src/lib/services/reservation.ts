@@ -30,7 +30,7 @@ export function createReservationService(ctx: WishlistContext) {
 				}
 
 				if (hasUserReservation) {
-					await removeReservation(itemId)
+					await removeReservation({ userId, itemId })
 					ctx.reservations = ctx.reservations.filter(
 						(r) => r.itemId !== itemId || r.userId !== userId
 					)

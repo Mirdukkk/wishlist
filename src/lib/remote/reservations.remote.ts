@@ -2,7 +2,7 @@ import { query } from '$app/server'
 import { db } from '$lib/server/db'
 import { reservations } from '$lib/server/db/schema'
 import { z } from 'zod'
-import { eq } from 'drizzle-orm'
+import { and, eq } from 'drizzle-orm'
 
 export const createReservation = query(
 	z.object({ userId: z.string(), itemId: z.string() }),
@@ -12,6 +12,11 @@ export const createReservation = query(
 	}
 )
 
-export const removeReservation = query(z.string(), async (id) => {
-	await db().delete(reservations).where(eq(reservations.itemId, id))
-})
+export const removeReservation = query(
+	z.object({ userId: z.string(), itemId: z.string() }),
+	async ({ userId, itemId }) => {
+		await db()
+			.delete(reservations)
+			.where(and(eq(reservations.userId, userId), eq(reservations.itemId, itemId)))
+	}
+)
