@@ -1,0 +1,24 @@
+{
+	"name": "wishlist",
+  "main": ".svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-12-09",
+	"compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".svelte-kit/cloudflare"
+  },
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "wishlist",
+			"database_id": "033d7daa-970e-4dd1-8f0f-1a8e5106c813",
+			"migrations_dir": "./src/lib/server/db/migrations"
+		}
+	],
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    }
+  }
+}

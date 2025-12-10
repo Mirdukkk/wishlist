@@ -10,6 +10,7 @@
 	}
 
 	let { name, image, shortDescription, price, flipped, onclick }: ProductCardProps = $props()
+
 	let productCardFrame = $derived.by(() => {
 		if (!price) return
 
@@ -36,7 +37,7 @@
 					width={192}
 					height={192}
 					draggable="false"
-					class="product-card__image"
+					class="product-card__images"
 				/>
 				<div class="product-card__info">
 					<Text as="h2" font="decorative" color="red">{name}</Text>
@@ -141,6 +142,12 @@
 			height: 100%;
 			transition: transform var(--duration-max);
 			transform-style: preserve-3d;
+		}
+
+		&--no-transition {
+			.product-card__wrapper {
+				transition: none;
+			}
 		}
 
 		&__front {

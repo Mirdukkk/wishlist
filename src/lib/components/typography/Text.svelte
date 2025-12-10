@@ -109,7 +109,7 @@
 	})
 </script>
 
-<svelte:element this={as} {...props} class={[derivedClasses, props.class]}>
+<svelte:element this={as} {...props} class={derivedClasses}>
 	{@render children()}
 </svelte:element>
 

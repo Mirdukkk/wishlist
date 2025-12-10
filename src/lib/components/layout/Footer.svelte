@@ -1,15 +1,14 @@
-<script module lang="ts">
-	export interface FooterLink {
+<script lang="ts">
+	import { links } from '$lib/constants'
+
+	import Text from '$lib/components/typography/Text.svelte'
+
+	interface FooterLink {
 		name: string
 		href: string
 	}
-</script>
 
-<script lang="ts">
-	import { links } from '$lib/constants'
-	import Text from '$lib/components/typography/Text.svelte'
-
-	const footerLinks = [
+	const footerLinks: FooterLink[] = [
 		{
 			name: 'Написать',
 			href: links.telegram

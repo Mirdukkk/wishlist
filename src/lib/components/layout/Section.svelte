@@ -1,13 +1,11 @@
-<script module lang="ts">
+<script lang="ts">
 	import type { Snippet } from 'svelte'
 
-	export interface SectionProps {
+	interface SectionProps {
 		name: string
 		children: Snippet
 	}
-</script>
 
-<script lang="ts">
 	let { name, children }: SectionProps = $props()
 </script>
 

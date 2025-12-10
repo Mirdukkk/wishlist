@@ -1,18 +1,19 @@
 <script module lang="ts">
 	export type Filter = 'all' | 'upTo500' | 'upTo1000' | 'upTo2000' | 'above2000'
-
-	export interface FiltersProps {
-		value: Filter
-	}
-
-	export interface FilterModel {
-		label: string
-		value: Filter
-	}
 </script>
 
 <script lang="ts">
 	let { value = $bindable() }: FiltersProps = $props()
+
+	interface FiltersProps {
+		value: Filter
+	}
+
+	interface FilterModel {
+		label: string
+		value: Filter
+	}
+
 	const filters: FilterModel[] = [
 		{
 			label: 'Все',

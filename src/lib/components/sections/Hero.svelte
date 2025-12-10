@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { getWishlistContext } from '$lib/context/wishlist'
+
 	import Section from '$lib/components/layout/Section.svelte'
 	import Text from '$lib/components/typography/Text.svelte'
-	import Filters, { type Filter } from '$lib/components/common/Filters.svelte'
+	import Filters from '$lib/components/common/Filters.svelte'
 
-	let filter: Filter = $state('all')
+	const ctx = getWishlistContext()
 </script>
 
 <Section name="hero">
@@ -16,7 +18,7 @@
 			<Text as="h1" variant="display" alignment="center">Мой вишлист</Text>
 		</div>
 		<div class="hero__filters">
-			<Filters bind:value={filter} />
+			<Filters bind:value={ctx.filterBy} />
 		</div>
 	</div>
 </Section>
