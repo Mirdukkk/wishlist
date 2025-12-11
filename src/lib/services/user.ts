@@ -1,14 +1,28 @@
 import type { WishlistContext } from '$lib/context/wishlist'
-import { createUser } from '$lib/remote/users.remote'
+import { createUser, validateUser } from '$lib/remote/users.remote'
 
 export function createUserService(ctx: WishlistContext) {
 	return {
 		createUser: async () => {
-			const user = await createUser('key')
-			const id = user[0].id
+			try {
+				const user = await createUser(ctx.key)
+				const id = user[0].id
 
-			ctx.userId = id
-			localStorage.setItem('user', id)
+				ctx.userId = id
+				ctx.hasAccess = true
+				localStorage.setItem('user', id)
+			} catch (e) {
+				ctx.hasAccess = false
+				throw e
+			}
+		},
+
+		validateUser: async () => {
+			try {
+				return await validateUser(ctx.key)
+			} catch {
+				return false
+			}
 		}
 	}
 }

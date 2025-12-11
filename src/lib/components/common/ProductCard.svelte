@@ -37,6 +37,7 @@
 					width={192}
 					height={192}
 					draggable="false"
+					fetchpriority="high"
 					class="product-card__images"
 				/>
 				<div class="product-card__info">
@@ -60,8 +61,9 @@
 	.product-card {
 		all: unset;
 		position: relative;
+		display: block;
 		box-sizing: border-box;
-		width: 100%;
+		width: 290px;
 		aspect-ratio: 5 / 7;
 		border-radius: 16px;
 		cursor: pointer;

@@ -1,6 +1,9 @@
 import { type WishlistContext } from '$lib/context/wishlist'
-import { createReservation, removeReservation } from '$lib/remote/reservations.remote'
-import { createUserService } from '$lib/services/user'
+import {
+	createReservation,
+	getReservations,
+	removeReservation
+} from '$lib/remote/reservations.remote'
 
 export function createReservationService(ctx: WishlistContext) {
 	return {
@@ -8,15 +11,14 @@ export function createReservationService(ctx: WishlistContext) {
 			ctx.reservations.filter((r) => r.userId === ctx.userId).map((r) => r.itemId),
 
 		toggle: async (itemId: string, maxReservations?: number) => {
-			if (ctx.loading) return
+			if (ctx.loading || !ctx.hasAccess) return
 			ctx.loading = true
 
 			try {
-				const { createUser } = createUserService(ctx)
-
-				if (!ctx.userId) await createUser()
 				const userId = ctx.userId
 				if (!userId) return
+
+				ctx.reservations = await getReservations()
 
 				const hasUserReservation = ctx.reservations.some(
 					(r) => r.itemId === itemId && r.userId === userId
@@ -35,15 +37,10 @@ export function createReservationService(ctx: WishlistContext) {
 						(r) => r.itemId !== itemId || r.userId !== userId
 					)
 
-					console.log(`Removing reservation for product ${itemId} and user ${userId}`)
 					return
 				} else {
 					const reservation = await createReservation({ userId, itemId })
 					ctx.reservations = [...ctx.reservations, reservation]
-
-					console.log(
-						`Creating reservation for product ${reservation.itemId} and user ${reservation.userId}`
-					)
 				}
 			} catch (e) {
 				console.error('Error toggling reservation:', e)

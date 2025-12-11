@@ -4,6 +4,10 @@ import { reservations } from '$lib/server/db/schema'
 import { z } from 'zod'
 import { and, eq } from 'drizzle-orm'
 
+export const getReservations = query(async () => {
+	return db().select().from(reservations)
+})
+
 export const createReservation = query(
 	z.object({ userId: z.string(), itemId: z.string() }),
 	async ({ userId, itemId }) => {

@@ -31,10 +31,8 @@
 	.layout {
 		display: flex;
 		flex-direction: column;
-		max-width: 1200px;
 		height: 100%;
 		min-height: 100vh;
-		margin-inline: auto;
 		padding-inline: 16px;
 
 		&__background {
@@ -44,12 +42,19 @@
 			width: 100%;
 			height: 240px;
 			mask-image: linear-gradient(black 50%, transparent);
+
+			@media (max-width: 640px) {
+				top: -20px;
+			}
 		}
 
 		&__content {
 			position: relative;
 			z-index: 5;
 			flex: 1;
+			width: 100%;
+			max-width: 1200px;
+			margin-inline: auto;
 			margin-block-start: 40px;
 
 			@media (max-width: 640px) {
@@ -58,6 +63,9 @@
 		}
 
 		&__footer {
+			width: 100%;
+			max-width: 1200px;
+			margin-inline: auto;
 			margin-block-start: 56px;
 
 			@media (max-width: 1024px) {

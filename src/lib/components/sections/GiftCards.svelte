@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state'
 	import { goto } from '$app/navigation'
+
 	import { giftCards } from '$lib/data/gift-cards'
 	import { getWishlistContext } from '$lib/context/wishlist'
 	import { createReservationService } from '$lib/services/reservation'
@@ -27,9 +28,9 @@
 				{@const cardDimmed = !canReserveCard || hasUserReservation}
 
 				<GiftCard
-					{...giftCard}
 					dimmed={cardDimmed}
 					onclick={() => goto(`#${giftCard.id}`, { noScroll: true })}
+					{...giftCard}
 				/>
 				<Dialog
 					item={giftCard}
@@ -41,12 +42,14 @@
 						<Button
 							block
 							variant={hasUserReservation ? 'accent' : 'default'}
-							disabled={!canReserveCard}
+							disabled={!canReserveCard || !ctx.hasAccess}
 							loading={ctx.loading}
 							onclick={() => toggle(giftCard.id, giftCard.maxReservations)}
 						>
 							{#if hasUserReservation}
 								Не буду дарить
+							{:else if !ctx.hasAccess}
+								Нужен ключ
 							{:else if canReserveCard}
 								Буду дарить
 							{:else}

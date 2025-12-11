@@ -7,6 +7,8 @@ export interface WishlistContext {
 	reservations: Reservation[]
 	filterBy: Filter
 	loading: boolean
+	key?: string
+	hasAccess: boolean
 }
 
 export const [getWishlistContext, setWishlistContext] = createContext<WishlistContext>()

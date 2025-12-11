@@ -26,7 +26,7 @@
 
 <footer class="footer">
 	<div class="footer__start">
-		<img src="/images/logos/me.svg" alt="Мой логотип" />
+		<img src="/images/logos/me.svg" alt="Мой логотип" width={90} height={28} />
 		<Text as="p" variant="caption" color="subtle">2025–2026</Text>
 	</div>
 	{#each footerLinks as footerLink}

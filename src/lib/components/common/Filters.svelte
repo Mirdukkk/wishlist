@@ -43,9 +43,7 @@
 		<button
 			type="button"
 			class="filters__item"
-			role="tab"
 			class:filters__item--selected={value === filter.value}
-			aria-selected={value === filter.value}
 			onclick={() => (value = filter.value)}
 		>
 			{filter.label}

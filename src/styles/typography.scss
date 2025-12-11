@@ -3,7 +3,7 @@
 	font-style: normal;
 	font-family: 'Podarok';
 	src: url('/fonts/Podarok.woff2') format('woff2');
-	font-display: fallback;
+	font-display: swap;
 }
 
 @font-face {
@@ -11,7 +11,7 @@
 	font-style: normal;
 	font-family: 'TikTokSans';
 	src: url('/fonts/TikTokSans-Regular.woff2') format('woff2');
-	font-display: fallback;
+	font-display: swap;
 }
 
 @font-face {
@@ -19,7 +19,7 @@
 	font-style: normal;
 	font-family: 'TikTokSans';
 	src: url('/fonts/TikTokSans-Medium.woff2') format('woff2');
-	font-display: fallback;
+	font-display: swap;
 }
 
 @font-face {
@@ -27,7 +27,7 @@
 	font-style: normal;
 	font-family: 'TikTokSans';
 	src: url('/fonts/TikTokSans-Bold.woff2') format('woff2');
-	font-display: fallback;
+	font-display: swap;
 }
 
 :root {

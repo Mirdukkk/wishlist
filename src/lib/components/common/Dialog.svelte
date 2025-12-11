@@ -9,20 +9,20 @@
 	import Text from '$lib/components/typography/Text.svelte'
 	import IconClose from '$lib/components/graphics/IconClose.svelte'
 
-	interface BaseDialogProps {
+	type ProductDialog = {
+		item: Product
+		side?: never
+	}
+
+	type GiftCardDialog = {
+		item: GiftCard
+		side: Snippet
+	}
+
+	type DialogProps = (ProductDialog | GiftCardDialog) & {
 		open?: boolean
 		actions: Snippet<[{ close: () => void }]>
 	}
-
-	type DialogProps =
-		| ({
-				item: Product
-				side?: never
-		  } & BaseDialogProps)
-		| ({
-				item: GiftCard
-				side: Snippet
-		  } & BaseDialogProps)
 
 	const whoosh = (node: HTMLElement) => {
 		const existingTransform = getComputedStyle(node).transform.replace('none', '')

@@ -29,5 +29,14 @@ export const products: Product[] = [
 		shortDescription: 'Класически шоколад',
 		price: 900,
 		link: 'https://example.com/kinder-bueno'
+	},
+	{
+		id: 'mars-1',
+		type: 'product',
+		name: 'Марс',
+		image: 'https://placehold.co/192',
+		shortDescription: 'Класически шоколад',
+		price: 900,
+		link: 'https://example.com/kinder-bueno'
 	}
 ]

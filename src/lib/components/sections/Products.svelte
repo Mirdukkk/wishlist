@@ -40,13 +40,13 @@
 		{#each filteredProducts as product (product.id)}
 			{@const canReserveProduct = canReserve(product.id, product.maxReservations)}
 			{@const hasUserReservation = userReservations().includes(product.id)}
-			{@const cardFilpped = !canReserveProduct || hasUserReservation}
+			{@const cardFlipped = !canReserveProduct || hasUserReservation}
 
-			<div animate:flip={{ duration: 300 }}>
+			<div class="grid__item" animate:flip={{ duration: 300 }}>
 				<ProductCard
-					flipped={cardFilpped}
-					{...product}
+					flipped={cardFlipped}
 					onclick={() => goto(`#${product.id}`, { noScroll: true })}
+					{...product}
 				/>
 				<Dialog
 					item={product}
@@ -59,11 +59,13 @@
 							block
 							variant={hasUserReservation ? 'accent' : 'default'}
 							loading={ctx.loading}
-							disabled={!canReserveProduct}
+							disabled={!canReserveProduct || !ctx.hasAccess}
 							onclick={() => toggle(product.id, product.maxReservations)}
 						>
 							{#if hasUserReservation}
 								Не буду дарить
+							{:else if !ctx.hasAccess}
+								Нужен ключ
 							{:else if canReserveProduct}
 								Буду дарить
 							{:else}
@@ -91,6 +93,13 @@
 		&__empty {
 			grid-column: 1 / -1;
 			padding: 24px 0;
+		}
+	}
+
+	.grid {
+		&__item {
+			display: flex;
+			justify-content: center;
 		}
 	}
 </style>
