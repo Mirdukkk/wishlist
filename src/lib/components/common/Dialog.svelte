@@ -67,9 +67,9 @@
 											{item.name}
 										</Text>
 										<div class="dialog__info">
-											{#if item.longDescription}
+											{#if item.description}
 												<Text as="p">
-													{item.longDescription}
+													{item.description}
 												</Text>
 											{/if}
 											{#if item.type === 'product' && item.price}

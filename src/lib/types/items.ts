@@ -3,14 +3,13 @@ import type { RGBColorValue } from '$lib/types/colors'
 export interface ProductSummary {
 	name: string
 	image: string
-	shortDescription?: string
 	price?: number
 }
 
 export interface BaseItem {
 	id: string
 	name: string
-	longDescription?: string
+	description?: string
 	link?: string
 	maxReservations?: number
 }

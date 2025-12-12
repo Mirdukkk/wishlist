@@ -9,15 +9,14 @@
 		onclick?: () => void
 	}
 
-	let { name, image, shortDescription, price, flipped, onclick }: ProductCardProps = $props()
+	let { name, image, price, flipped, onclick }: ProductCardProps = $props()
 
 	let productCardFrame = $derived.by(() => {
 		if (!price) return
 
-		if (price <= 500) return 1
-		if (price <= 1000) return 2
-		if (price <= 2000) return 3
-		return 4
+		if (price <= 1000) return 1
+		if (price <= 2000) return 2
+		return 3
 	})
 </script>
 
@@ -38,13 +37,10 @@
 					height={192}
 					draggable="false"
 					fetchpriority="high"
-					class="product-card__images"
+					class="product-card__image"
 				/>
 				<div class="product-card__info">
 					<Text as="h2" font="decorative" color="red">{name}</Text>
-					{#if shortDescription}
-						<Text as="p" weight="medium">{shortDescription}</Text>
-					{/if}
 					{#if price}
 						<Text as="p" variant="headingSm">{formatPrice(price)}</Text>
 					{/if}
@@ -69,6 +65,12 @@
 		cursor: pointer;
 		user-select: none;
 		perspective: 100vh;
+
+		&:hover {
+			.product-card__image {
+				animation-play-state: running;
+			}
+		}
 
 		&:active {
 			.product-card__wrapper {
@@ -97,25 +99,19 @@
 		&--frame {
 			&-1 {
 				.product-card__front {
-					background-image: url('/images/product/frame-1.svg');
+					background-image: url('/images/elements/frame-1.svg');
 				}
 			}
 
 			&-2 {
 				.product-card__front {
-					background-image: url('/images/product/frame-2.svg');
+					background-image: url('/images/elements/frame-2.svg');
 				}
 			}
 
 			&-3 {
 				.product-card__front {
-					background-image: url('/images/product/frame-3.svg');
-				}
-			}
-
-			&-4 {
-				.product-card__front {
-					background-image: url('/images/product/frame-4.svg');
+					background-image: url('/images/elements/frame-3.svg');
 				}
 			}
 		}
@@ -181,11 +177,11 @@
 		&__inner {
 			display: flex;
 			flex-direction: column;
-			gap: 20px;
+			gap: 28px;
 			justify-content: center;
 			align-items: center;
 			height: 100%;
-			padding: 16px;
+			padding: 12px;
 			border: none;
 			border-radius: 6px;
 			background: rgb(var(--color-cream));
@@ -197,12 +193,13 @@
 			width: auto;
 			height: 192px;
 			border-radius: 6px;
+			animation: animation-snap 0.75s steps(1, end) infinite paused;
 		}
 
 		&__info {
 			display: flex;
 			flex-direction: column;
-			gap: 8px;
+			gap: 12px;
 		}
 
 		&__pattern {
@@ -210,8 +207,30 @@
 			height: 100%;
 			border: 3px solid rgb(var(--color-cream));
 			border-radius: 6px;
-			background-image: url('/images/product/back-pattern.svg');
+			background-image: url('/images/elements/back-pattern.svg');
 			background-size: cover;
+		}
+	}
+
+	@keyframes animation-snap {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		1% {
+			transform: rotate(5deg);
+		}
+
+		50% {
+			transform: rotate(5deg);
+		}
+
+		51% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(0deg);
 		}
 	}
 </style>

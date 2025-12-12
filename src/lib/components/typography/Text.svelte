@@ -52,7 +52,7 @@
 		class?: ClassValue
 		font?: TextPropsFont
 		tracking?: TextPropsTracking
-		truncate?: boolean
+		nobreak?: boolean
 		uppercase?: boolean
 		variant?: TextPropsVariant
 		textDecoration?: TextPropsDecoration
@@ -69,7 +69,7 @@
 		color,
 		font,
 		tracking,
-		truncate,
+		nobreak,
 		uppercase,
 		variant,
 		textDecoration,
@@ -103,7 +103,7 @@
 			[`text--decoration-${textDecoration}`]: textDecoration,
 			[`text--tracking-${tracking}`]: tracking,
 			'text--uppercase': uppercase,
-			'text--truncate': truncate,
+			'text--nobreak': nobreak,
 			'text--break': breakWord
 		}
 	})
@@ -268,9 +268,7 @@
 			text-transform: uppercase;
 		}
 
-		&--truncate {
-			overflow: hidden;
-			text-overflow: ellipsis;
+		&--nobreak {
 			white-space: nowrap;
 		}
 

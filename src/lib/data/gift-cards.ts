@@ -5,33 +5,32 @@ export const giftCards: GiftCard[] = [
 		id: 'gold-apple',
 		type: 'gift-card',
 		name: 'Золотое Яблоко',
-		longDescription:
-			'Подарочные карты «Золотое Яблоко» — это универсальный и стильный подарок для ваших близких и друзей.',
+		description: 'Иногда хожу туда, люблю покупать уходовую косметику и парфюмерию.',
 		color: [219, 254, 0],
 		logo: '/images/logos/gold-apple.svg',
 		link: 'https://goldapple.ru/cards',
-		maxReservations: 2
+		maxReservations: 10
 	},
 	{
 		id: 'skuratov-coffee',
 		type: 'gift-card',
 		name: 'Skuratov Coffee',
-		longDescription:
-			'Подарочные карты Skuratov Coffee — отличный способ порадовать себя и своих близких качественным кофе и аксессуарами.',
+		description:
+			'Часто появляюсь в этой кофейне, хочу чаще радовать себя хорошим кофе и шоколадными печенюшками.',
 		color: [208, 204, 201],
 		logo: '/images/logos/skuratov-coffee.svg',
 		link: 'https://skuratovcoffee.ru/shop/card',
-		maxReservations: 2
+		maxReservations: 10
 	},
 	{
 		id: 'ozon',
 		type: 'gift-card',
 		name: 'Ozon',
-		longDescription:
-			'Подарочные сертификаты Ozon — это универсальный подарок, который позволяет выбрать из миллионов товаров на крупнейшей онлайн-платформе России.',
+		description:
+			'Чтобы покупать нужные мелочи и китайские безделушки на все случаи. И не думать, что «это не самое нужное»',
 		color: [0, 105, 255],
 		logo: '/images/logos/ozon.svg',
 		link: 'https://www.ozon.ru/landing/giftcertificates/',
-		maxReservations: 2
+		maxReservations: 10
 	}
 ]
