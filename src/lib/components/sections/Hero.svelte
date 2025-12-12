@@ -11,7 +11,7 @@
 <Section name="hero">
 	<div class="hero__container">
 		<div class="hero__top">
-			<img class="hero__image" src="https://placehold.co/64" alt="Я" width="64" height="64" />
+			<img class="hero__image" src="/images/me.webp" alt="Я" width="256" height="256" />
 			<Text class="hero__name" as="p" weight="bold" alignment="center">Егор</Text>
 		</div>
 		<div class="hero__title">
