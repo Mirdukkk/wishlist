@@ -11,6 +11,18 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<meta name="description" content="Мой вишлист с подарками на новый год" />
+	<meta name="keywords" content="вишлист, wishlist, подарки, новый год, егор" />
+	<meta name="author" content="Egor Mamykin" />
+	<meta property="og:title" content="Мой вишлист — Егор Мамыкин" />
+	<meta property="og:description" content="Мой вишлист с подарками на новый год" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="/images/og-image.png" />
+	<meta property="og:url" content="https://wish.egor.me" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Мой вишлист — Егор Мамыкин" />
+	<meta name="twitter:description" content="Мой вишлист с подарками на новый год" />
+	<meta name="twitter:image" content="/images/og-image.png" />
 	<title>Мой вишлист — Егор Мамыкин</title>
 </svelte:head>
 
