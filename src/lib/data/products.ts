@@ -27,12 +27,13 @@ export const products: Product[] = [
 		link: 'https://ozon.ru/t/fAKFKrz'
 	},
 	{
-		id: 'christmas-drip',
+		id: 'drip-berri',
 		type: 'product',
 		name: 'Дрип-пакеты',
-		image: '/images/products/christmas-drip.webp',
-		price: 379,
-		link: 'https://shop.tastycoffee.ru/coffee/drip-coffee-christmas-2026'
+		description: 'Или можно подарить любые другие на ваш вкус.',
+		image: '/images/products/drip-berri.webp',
+		price: 619,
+		link: 'https://shop.tastycoffee.ru/coffee/drip-coffee-berri'
 	},
 	{
 		id: 'coffee-syrup',
