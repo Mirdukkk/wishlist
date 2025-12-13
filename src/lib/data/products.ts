@@ -95,7 +95,7 @@ export const products: Product[] = [
 		type: 'product',
 		name: 'Лампа на монитор',
 		image: '/images/products/monitor-lamp.webp',
-		price: 3828,
+		price: 4100,
 		link: 'https://market.yandex.ru/cc/8EL8bH'
 	},
 	{
