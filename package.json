@@ -12,11 +12,11 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"deploy": "npm run build && wrangler deploy",
+		"deploy": "npm run build && npm run db:migrate && wrangler deploy",
 		"db:push": "drizzle-kit push",
 		"db:generate": "drizzle-kit generate --config=drizzle-prod.config.ts",
 		"db:generate:dev": "drizzle-kit generate --config=drizzle-dev.config.ts",
-		"db:migrate": "drizzle-kit migrate --config=drizzle-prod.config.ts",
+		"db:migrate": "wrangler d1 migrations apply DB --remote",
 		"db:migrate:dev": "drizzle-kit migrate --config=drizzle-dev.config.ts",
 		"db:studio": "drizzle-kit studio"
 	},

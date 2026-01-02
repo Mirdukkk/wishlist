@@ -1,1 +1,0 @@
-ALTER TABLE `reservations` RENAME COLUMN "product_id" TO "item_id";
