@@ -11,7 +11,7 @@
 		{
 			"binding": "DB",
 			"database_name": "wishlist",
-			"database_id": "033d7daa-970e-4dd1-8f0f-1a8e5106c813",
+			"database_id": "2cca4174-fc97-4388-a589-600b988b9bf6",
 			"migrations_dir": "./src/lib/server/db/migrations"
 		}
 	],
